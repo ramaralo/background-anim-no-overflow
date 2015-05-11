@@ -5,12 +5,13 @@
 function BgAnim(config) {
     var currentPosition;
     var INITIAL_POS;
+    var increment = 20;
+
     var raf = null;
 
     var domElements = {
         main: null
     };
-
 
 
     (function () {
@@ -21,15 +22,13 @@ function BgAnim(config) {
 
         currentPosition = INITIAL_POS;
     })(config);
-
-
     function getBgPosition() {
         var val = domElements.main.style.backgroundPositionY;
         return (val !== '') ? null : val;
     }
 
     function calcNextPosition() {
-        currentPosition = (currentPosition + 20) % 300;
+        currentPosition = (currentPosition + increment) % 300;
     }
 
     function animate() {
@@ -48,4 +47,12 @@ function BgAnim(config) {
     this.start = function () {
         animate();
     };
+
+    this.increaseSpeed = function () {
+        increment++;
+    }
+
+    this.decreaseSpeed = function () {
+        increment--;
+    }
 }
