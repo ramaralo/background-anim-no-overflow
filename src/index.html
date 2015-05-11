@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="js/BgAnim.js"></script>
+    <title></title>
+</head>
+<body>
+
+    <div id="mainElement" class="animation-container"></div>
+
+    <script>
+
+        var animatedElem = new BgAnim(
+                {
+                    element: document.getElementById('mainElement'),
+                    initialPosition: 0
+                }
+        )
+
+        console.log(animatedElem.getMainElement());
+
+        animatedElem.start();
+    </script>
+</body>
+</html>
