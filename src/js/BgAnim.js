@@ -12,6 +12,7 @@ function BgAnim(config) {
     var domElements = {
         main: null
     };
+    var running = false;
 
 
     (function () {
@@ -44,36 +45,30 @@ function BgAnim(config) {
         return domElements.main;
     };
 
-
     this.start = function () {
         animate();
+        running = true;
     };
 
     this.increaseSpeed = function () {
-        increment++;
+        if(running) {
+            increment++;
+        }
 
         console.log(increment);
-        
-        if(increment === 0) {
-            this.stop();
-        } else {
-            this.start(); // FIXME: remove this
-        }
+
     };
 
     this.decreaseSpeed = function () {
-        increment--;
+        if(running) {
+            increment--;
+        }
 
         console.log(increment);
-
-        if(increment === 0) {
-            this.stop();
-        } else {
-            this.start();
-        }
     };
     
     this.stop = function () {
         cancelAnimationFrame(raf);
+        running = false;
     }
 }
