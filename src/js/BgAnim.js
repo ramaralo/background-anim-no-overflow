@@ -57,7 +57,7 @@ function BgAnim(config) {
         if(increment === 0) {
             this.stop();
         } else {
-            this.start();
+            this.start(); // FIXME: remove this
         }
     };
 
