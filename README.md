@@ -1,2 +1,2 @@
 # background-anim-no-overflow
-Testing an algorithm to prevent number overflow of background position
+A simple background animation code that prevents number overflow.
