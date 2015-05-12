@@ -6,7 +6,6 @@ function BgAnim(config) {
     var currentPosition;
     var INITIAL_POS;
     var increment = 20;
-    var myObj = this;
     
     var raf = null;
     var domElements = {
@@ -23,11 +22,6 @@ function BgAnim(config) {
 
         currentPosition = INITIAL_POS;
     })(config);
-
-    function getBgPosition() {
-        var val = domElements.main.style.backgroundPositionY;
-        return (val !== '') ? null : val;
-    }
 
     function calcNextPosition() {
         currentPosition = (currentPosition + increment) % 300;
@@ -50,25 +44,33 @@ function BgAnim(config) {
         running = true;
     };
 
-    this.increaseSpeed = function () {
+    this.increaseSpeed = function (increaseVal) {
         if(running) {
-            increment++;
+            increaseVal = (increaseVal !== undefined) ? increaseVal : 1;
+            increment += increaseVal;
         }
-
-        console.log(increment);
-
     };
 
     this.decreaseSpeed = function () {
         if(running) {
             increment--;
         }
-
-        console.log(increment);
     };
     
     this.stop = function () {
         cancelAnimationFrame(raf);
         running = false;
-    }
+    };
+
+    this.getIncrement = function () {
+        return increment;
+    };
+
+    this.setIncrement = function (val) {
+        increment = val;
+    };
+
+    this.setPosition = function (val) {
+        domElements.main.style.backgroundPositionY = val + 'px';
+    };
 }
