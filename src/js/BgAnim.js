@@ -15,13 +15,21 @@ function BgAnim(config) {
 
 
     (function () {
+        init(config)
+    })(config);
+    
+    function init(config) {
         domElements.main = config.element;
         INITIAL_POS = config.initialPosition;
-
+    
         domElements.main.style.backgroundPositionY = INITIAL_POS;
-
+    
         currentPosition = INITIAL_POS;
-    })(config);
+    }
+    
+    this.init = function (config) {
+        init(config);
+    };
 
     function calcNextPosition() {
         currentPosition = (currentPosition + increment) % 300;
